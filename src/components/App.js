@@ -4,35 +4,36 @@ import {
   Normalize
 } from 'styled-normalize'
 import logo from '../icons/logo.svg';
-import GivelifyThemeProvider from './GivelifyThemeProvider'
+import GivelifyThemeProvider from './GivelifyThemeProvider';
+import TodoForm from './TodoForm';
+
+const categoryList = [{
+    id: 'today',
+    title: 'Today'
+  },
+  {
+    id: 'tomorrow',
+    title: 'Tomorrow'
+  },
+  {
+    id: 'this_week',
+    title: 'This Week',
+  },
+  {
+    id: 'no_date',
+    title: 'No Date'
+  }
+];
 
 function App() {
   // Initialize state
   const [categories, setCategories] = useState([])
   const [todos, setTodos] = useState([]);
 
-  const categoryList = [{
-      id: 'today',
-      title: 'Today'
-    },
-    {
-      id: 'tomorrow',
-      title: 'Tomorrow'
-    },
-    {
-      id: 'this_week',
-      title: 'This Week',
-    },
-    {
-      id: 'no_date',
-      title: 'No Date'
-    }
-  ];
-
-  // Update the categories state whenever a change is made to the categoryList array
+  // Update the categories state on the initial render
   useEffect(() => {
     setCategories(categoryList)
-  }, [categoryList]);
+  }, []);
 
   return (
     <>
@@ -42,6 +43,7 @@ function App() {
         <Header>
           <img src={logo} alt="Givelify Todo Application" />
         </Header>
+        <TodoForm categories={categories} />
       </AppDiv>
     </GivelifyThemeProvider>
     </>
@@ -51,7 +53,9 @@ function App() {
 export default App;
 
 const AppDiv = styled.div`
+  margin: 0 auto;
   background: ${props => props.theme.givelifyTheme.colors.grayBackground};
+  max-width: 1000px;
 
   * {
       box-sizing: border-box;
