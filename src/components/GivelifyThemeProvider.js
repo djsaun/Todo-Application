@@ -3,6 +3,7 @@ import {
   ThemeProvider
 } from 'styled-components';
 import calendar from '../icons/calendar.svg';
+import checkCircle from '../icons/check-circle.svg';
 import folder from '../icons/folder.svg';
 import inbox from '../icons/inbox.svg';
 import sun from '../icons/sun.svg';
@@ -23,6 +24,7 @@ const givelifyTheme = {
     }
   },
   icons: {
+    logo: checkCircle,
     categories: {
       today: inbox,
       tomorrow: sun,
