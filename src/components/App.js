@@ -9,19 +9,23 @@ import TodoForm from './TodoForm';
 
 const categoryList = [{
     id: 'today',
-    title: 'Today'
+    title: 'Today',
+    includeBtn: true
   },
   {
     id: 'tomorrow',
-    title: 'Tomorrow'
+    title: 'Tomorrow',
+    includeBtn: true
   },
   {
     id: 'this_week',
     title: 'This Week',
+    includeBtn: true
   },
   {
     id: 'no_date',
-    title: 'No Date'
+    title: 'No Date',
+    includeBtn: false
   }
 ];
 
