@@ -29,7 +29,7 @@ const TodoForm = props => {
           Set the category for the todo item on button click
           If the current category button is clicked again, set the category to the default no_date
       */}
-      {filteredCategories && filteredCategoryList.map(cat => <button key={cat.id} onClick={() => category !== cat.id ? setCategory(cat.id) : setCategory('no_date')}>{cat.title}</button>)}
+      {filteredCategories && filteredCategoryList.map(cat => <Button key={cat.id} id={cat.id} onClick={() => category !== cat.id ? setCategory(cat.id) : setCategory('no_date')}>{cat.title}</Button>)}
     </FormContainer>
   )
 };
@@ -40,6 +40,20 @@ const FormContainer = styled.div`
 
 const FormInput = styled.input`
   /* background: green; */
+`;
+
+const Button = styled.button`
+  padding: 12px 16px;
+  background: ${props => props.theme.givelifyTheme.colors.grayBackground};
+  border: none;
+  border-radius: 100px;
+  cursor: pointer;
+  transition: all .3s ease;
+
+  &:hover, &:active, &:focus {
+    color: ${props => props.theme.givelifyTheme.colors.categories[props.id]};
+    background: ${props => props.theme.givelifyTheme.colors.categories[props.id]};
+  }
 `;
 
 export default TodoForm;
