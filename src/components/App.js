@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect, useReducer} from 'react';
 import styled from 'styled-components'
 import {
   Normalize
@@ -7,6 +7,33 @@ import logo from '../icons/logo.svg';
 import GivelifyThemeProvider from './GivelifyThemeProvider'
 
 function App() {
+  // Initialize state
+  const [categories, setCategories] = useState([])
+  const [todos, setTodos] = useState([]);
+
+  const categoryList = [{
+      id: 'today',
+      title: 'Today'
+    },
+    {
+      id: 'tomorrow',
+      title: 'Tomorrow'
+    },
+    {
+      id: 'this_week',
+      title: 'This Week',
+    },
+    {
+      id: 'no_date',
+      title: 'No Date'
+    }
+  ];
+
+  // Update the categories state whenever a change is made to the categoryList array
+  useEffect(() => {
+    setCategories(categoryList)
+  }, [categoryList]);
+
   return (
     <>
     <Normalize />

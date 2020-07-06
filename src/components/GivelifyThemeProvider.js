@@ -14,7 +14,7 @@ const givelifyTheme = {
     black: '#000',
     gray700: '#6B6F7C',
     gray500: '#848791',
-    grayBackground: '#E5E5E5',
+    grayBackground: '#F9FAFC',
     white: '#FFF',
     categories: {
       today: '#FF006E',
