@@ -3,7 +3,6 @@ import {
   ThemeProvider
 } from 'styled-components';
 import calendar from '../icons/calendar.svg';
-import checkCircle from '../icons/check-circle.svg';
 import folder from '../icons/folder.svg';
 import inbox from '../icons/inbox.svg';
 import sun from '../icons/sun.svg';
@@ -11,10 +10,11 @@ import sun from '../icons/sun.svg';
 
 // Create a default theme for the application that contains all of our colors, icons, etc.
 const givelifyTheme = {
-    colors: {
+  colors: {
     black: '#000',
     gray700: '#6B6F7C',
     gray500: '#848791',
+    grayBackground: '#E5E5E5',
     white: '#FFF',
     categories: {
       today: '#FF006E',
@@ -24,7 +24,6 @@ const givelifyTheme = {
     }
   },
   icons: {
-    logo: checkCircle,
     categories: {
       today: inbox,
       tomorrow: sun,
@@ -48,7 +47,7 @@ const GivelifyThemeProvider = (props) => {
     theme
   } > {
     props.children
-  } </ThemeProvider>;
+  } < /ThemeProvider>;
 };
 
 export default GivelifyThemeProvider;
