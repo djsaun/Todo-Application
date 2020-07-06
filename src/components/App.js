@@ -60,13 +60,6 @@ const AppDiv = styled.div`
   margin: 0 auto;
   background: ${props => props.theme.givelifyTheme.colors.grayBackground};
   max-width: 1000px;
-
-  * {
-      box-sizing: border-box;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      -webkit-tap-highlight-color: transparent;
-  }
 `;
 
 const Header = styled.header`

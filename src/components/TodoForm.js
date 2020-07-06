@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
+import { rgba } from 'polished';
 
 const TodoForm = props => {
   const [text, setText] = useState('');
@@ -23,36 +24,41 @@ const TodoForm = props => {
 
   return (
     <FormContainer>
-      <FormInput value={text} onChange={e => setText(e.target.value)} placeholder="What do you need to get done?" />
+      <FormInput value={text} selectedCategory={category} onChange={e => setText(e.target.value)} placeholder="What do you need to get done?" />
 
-      {/* Loop through all filtered categories and display them as buttons;
+      <div>
+        {/* Loop through all filtered categories and display them as buttons;
           Set the category for the todo item on button click
           If the current category button is clicked again, set the category to the default no_date
-      */}
-      {filteredCategories && filteredCategoryList.map(cat => <Button key={cat.id} id={cat.id} onClick={() => category !== cat.id ? setCategory(cat.id) : setCategory('no_date')}>{cat.title}</Button>)}
+        */}
+        {filteredCategories && filteredCategoryList.map(cat => <Button key={cat.id} id={cat.id} className={category === cat.id ? 'active' : ''} onClick={() => category !== cat.id ? setCategory(cat.id) : setCategory('no_date')}>{cat.title}</Button>)}
+      </div>
+
     </FormContainer>
   )
 };
 
 const FormContainer = styled.div`
-  /* background: red; */
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 200px;
 `;
 
 const FormInput = styled.input`
-  /* background: green; */
-`;
+  caret-color: ${ props => props.theme.givelifyTheme.colors.categories[props.selectedCategory]};`;
 
 const Button = styled.button`
   padding: 12px 16px;
+  color: ${props => props.theme.givelifyTheme.colors.gray700};
   background: ${props => props.theme.givelifyTheme.colors.grayBackground};
   border: none;
   border-radius: 100px;
   cursor: pointer;
   transition: all .3s ease;
 
-  &:hover, &:active, &:focus {
+  &.active, &:hover, &:active, &:focus {
     color: ${props => props.theme.givelifyTheme.colors.categories[props.id]};
-    background: ${props => props.theme.givelifyTheme.colors.categories[props.id]};
+    background: ${props => rgba(props.theme.givelifyTheme.colors.categories[props.id], .1)};
   }
 `;
 
