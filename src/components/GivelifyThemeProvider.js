@@ -11,10 +11,11 @@ import sun from '../icons/sun.svg';
 // Create a default theme for the application that contains all of our colors, icons, etc.
 const givelifyTheme = {
   colors: {
-    black: '#000',
+    gray900: '#0A1323',
     gray700: '#6B6F7C',
     gray500: '#848791',
     grayBackground: '#F9FAFC',
+    grayShadow: '#EBEEF5',
     white: '#FFF',
     categories: {
       today: '#FF006E',

@@ -1,11 +1,14 @@
 import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
 import { rgba } from 'polished';
+import plus from '../icons/plus.svg';
+import plusWhite from '../icons/plus_white.svg'
 
 const TodoForm = props => {
   const [text, setText] = useState('');
   const [categoryList, setCategoryList] = useState([])
   const [filteredCategoryList, setFilteredCategoryList] = useState([]);
+  const [inputFocus, setInputFocus] = useState(false);
 
   // Todo item category defaults to no date
   const [category, setCategory] = useState('no_date');
@@ -24,41 +27,89 @@ const TodoForm = props => {
 
   return (
     <FormContainer>
-      <FormInput value={text} selectedCategory={category} onChange={e => setText(e.target.value)} placeholder="What do you need to get done?" />
+      <FormInput value={text} onBlur={() => setInputFocus(!inputFocus)} selectedCategory={category} onChange={e => setText(e.target.value)} placeholder="What do you need to get done?" />
 
-      <div>
+      <FormControls>
         {/* Loop through all filtered categories and display them as buttons;
           Set the category for the todo item on button click
           If the current category button is clicked again, set the category to the default no_date
         */}
         {filteredCategories && filteredCategoryList.map(cat => <Button key={cat.id} id={cat.id} className={category === cat.id ? 'active' : ''} onClick={() => category !== cat.id ? setCategory(cat.id) : setCategory('no_date')}>{cat.title}</Button>)}
-      </div>
 
+        <AddButton selectedCategory={category}></AddButton>
+      </FormControls>
     </FormContainer>
   )
 };
 
 const FormContainer = styled.div`
+  padding: 30px 35px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-gap: 200px;
+  grid-gap: 100px;
+  box-shadow: 0 4px 8px ${props => props.theme.givelifyTheme.colors.grayShadow}
 `;
 
 const FormInput = styled.input`
-  caret-color: ${ props => props.theme.givelifyTheme.colors.categories[props.selectedCategory]};`;
+  font-size: 24px;
+  color: ${props => props.theme.givelifyTheme.colors.gray500};
+  line-height: 1.2;
+  letter-spacing: -.02em;
+  border: none;
+  outline: none;
+  caret-color: ${ props => props.selectedCategory !== 'no_date' ? props.theme.givelifyTheme.colors.categories[props.selectedCategory] : props.theme.givelifyTheme.colors.gray900};
+
+  &::placeholder {
+    color: ${props => props.theme.givelifyTheme.colors.gray900}
+  }
+`;
+
+const FormControls = styled.div`
+  display: flex;
+  align-items: center;
+`;
 
 const Button = styled.button`
   padding: 12px 16px;
+  margin-right: 8px;
   color: ${props => props.theme.givelifyTheme.colors.gray700};
   background: ${props => props.theme.givelifyTheme.colors.grayBackground};
-  border: none;
+  border: 1px solid ${props => props.theme.givelifyTheme.colors.white};
   border-radius: 100px;
+  outline: none;
   cursor: pointer;
   transition: all .3s ease;
 
   &.active, &:hover, &:active, &:focus {
     color: ${props => props.theme.givelifyTheme.colors.categories[props.id]};
     background: ${props => rgba(props.theme.givelifyTheme.colors.categories[props.id], .1)};
+  }
+
+  &::last-of-type {
+    margin-right: 0;
+  }
+`;
+
+const AddButton = styled.button`
+  width: 40px;
+  height: 40px;
+  font-size: 24px;
+  background-color: ${props => props.selectedCategory !== 'no_date' ? props.theme.givelifyTheme.colors.categories[props.selectedCategory] : props.theme.givelifyTheme.colors.grayBackground};
+  background-image: ${props => props.selectedCategory !== 'no_date' ? `url(${plusWhite})` : `url(${plus})`};
+  background-size: 18px 18px;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: 1px solid ${props => props.theme.givelifyTheme.colors.white};
+  border-radius: 100px;
+  cursor: pointer;
+  outline: none;
+  transform: rotate(0);
+  transition: all .3s ease;
+
+  &:hover, &:active, &:focus {
+    background-image: url(${plusWhite});
+    background-color: ${props => props.theme.givelifyTheme.colors.categories[props.selectedCategory]};
+    transform: rotate(90deg);
   }
 `;
 
