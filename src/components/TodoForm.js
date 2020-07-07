@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useRef} from 'react';
+import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
 import { rgba } from 'polished';
 import plus from '../icons/plus.svg';
@@ -28,7 +28,7 @@ const TodoForm = props => {
 
   return (
     <FormContainer focused={formFocused} selectedCategory={category}>
-      <FormInput value={text} onFocus={() => setFormFocused(true)} onBlur={() => setFormFocused(false)} selectedCategory={category} onChange={e => setText(e.target.value)} placeholder="What do you need to get done?" />
+      <FormInput value={text} onFocus={() => setFormFocused(true)} onBlur={() => setFormFocused(false)} onChange={e => setText(e.target.value)} placeholder="What do you need to get done?" />
 
       <FormControls>
         {/* Loop through all filtered categories and display them as buttons;
@@ -53,6 +53,10 @@ const FormContainer = styled.div`
   border-radius: 12px;
   box-shadow: ${props => props.focused ? `0 4px 32px ${rgba(props.theme.givelifyTheme.colors.categories[props.selectedCategory], .12)}` : `0 4px 8px ${props => props.theme.givelifyTheme.colors.grayShadow}`};
   transition: all .3s ease;
+
+  > input {
+    caret-color: ${ props => props.selectedCategory !== 'no_date' ? props.theme.givelifyTheme.colors.categories[props.selectedCategory] : props.theme.givelifyTheme.colors.gray900};
+  }
 `;
 
 const FormInput = styled.input`
@@ -62,7 +66,6 @@ const FormInput = styled.input`
   letter-spacing: -.02em;
   border: none;
   outline: none;
-  caret-color: ${ props => props.selectedCategory !== 'no_date' ? props.theme.givelifyTheme.colors.categories[props.selectedCategory] : props.theme.givelifyTheme.colors.gray900};
 
   &::placeholder {
     color: ${props => props.theme.givelifyTheme.colors.gray900}

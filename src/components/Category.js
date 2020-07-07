@@ -3,8 +3,8 @@ import styled from 'styled-components';
 import Todo from './Todo';
 
 const Category = props => {
-  const { id, title, todos } = props;
-  
+  const { id, title, todos, categories } = props;
+    
   return (
     <CategoryItem>
       <CategoryInfo>
@@ -15,7 +15,7 @@ const Category = props => {
         <Count>{todos.length} {todos.length === 1 ? 'todo' : 'todos'}</Count>
       </CategoryInfo>
 
-      {todos && todos.map(todo => <Todo key={todo.id} {...todo} />)}
+      {todos && todos.map(todo => <Todo key={todo.id} {...todo} categories={categories} />)}
     </CategoryItem>
   )
 }
@@ -54,6 +54,7 @@ const Icon = styled.div`
 
 const Title = styled.h3`
   margin: 0 0 0 30px;
+  font-size: 24px;
   color: ${props => props.theme.givelifyTheme.colors.categories[props.color]}
 `;
 
