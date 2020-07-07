@@ -5,12 +5,12 @@ import checkmark from '../icons/checkmark.svg';
 import close from '../icons/close_icon.svg';
 
 const Todo = props => {
-  const { deleteTodo, id, category, categories, text, isCompleted} = props;
+  const { deleteTodo, completeTodo, id, category, categories, text, isCompleted} = props;
 
   return (
     <TodoItem complete={isCompleted} className={isCompleted ? 'complete' : ''}>
       <div>
-        <Icon className='icon' />
+        <Icon className='icon' onClick={() => completeTodo(id)} />
         <Text>{text}</Text>
       </div>
 

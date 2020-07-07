@@ -1,8 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { createGlobalStyle } from 'styled-components';
+import { Normalize } from 'styled-normalize'
 import App from './components/App';
 import * as serviceWorker from './serviceWorker';
+import GivelifyThemeProvider from './components/GivelifyThemeProvider'
 
 const GlobalStyle = createGlobalStyle `
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
@@ -10,6 +12,7 @@ const GlobalStyle = createGlobalStyle `
   body {
     box-sizing: border-box;
     font-family: 'Inter', sans-serif;
+    background: ${props => props.theme.givelifyTheme.colors.grayBackground};
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     -webkit-tap-highlight-color: transparent;
@@ -18,8 +21,14 @@ const GlobalStyle = createGlobalStyle `
 
 ReactDOM.render(
   <React.StrictMode>
-    <GlobalStyle />
-    <App />
+    {/* Expose all of the components to the custom givelify theme provider and theme */}
+    <GivelifyThemeProvider>
+      {/* Reset CSS */}
+      <Normalize />
+
+      <GlobalStyle />
+      <App />
+    </GivelifyThemeProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

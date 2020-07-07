@@ -1,10 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import styled from 'styled-components'
-import {
-  Normalize
-} from 'styled-normalize'
 import logo from '../icons/logo.svg';
-import GivelifyThemeProvider from './GivelifyThemeProvider';
 import TodoForm from './TodoForm';
 import TodoList from './TodoList';
 import CompletedSection from './CompletedSection';
@@ -71,8 +67,16 @@ function App() {
     // Copy over the existing todos state
     const todoItems = [...todos];
 
-    
+    // Let the user confirm that they want to mark the item as complete
+    const confirm = window.confirm("Are you sure you want to mark this item as complete?");
 
+    if (confirm) {
+      // Find the todo item in the todos state array and change its isCompleted value
+      todoItems.find(item => item.id === id).isCompleted = true;
+    }
+
+    // Update the todos state
+    setTodos(todoItems);
   }
 
   const deleteTodo = id => {
@@ -80,15 +84,11 @@ function App() {
     let todoItems = [...todos];
    
     // Let the user confirm that the todo item should be deleted
-    const confirm = window.confirm('Are you sure you want to delete this?');
+    const confirm = window.confirm('Are you sure you want to delete this item?');
 
     if (confirm) {
       // Loop over all of the todos and filter the targeted todo out of the todoItems array
       todoItems = todoItems.filter(item => item.id !== id );
-
-    } else {
-      // Otherwise, return and keep the todo item in state
-      return;
     }
 
     // Update the todos state
@@ -96,34 +96,21 @@ function App() {
   }
 
   return (
-    <>
-    {/* Reset CSS */}
-    <Normalize />
+    <Container>
+      <Header>
+        <img src={logo} alt="Givelify Todo Application" />
+      </Header>
 
-    {/* Expose all of the components to the custom givelify theme provider and theme */}
-    <GivelifyThemeProvider>
-      <AppDiv>
-        <Container>
-          <Header>
-            <img src={logo} alt="Givelify Todo Application" />
-          </Header>
-          <TodoForm addTodo={addTodo} categories={categories} />
+      <TodoForm addTodo={addTodo} categories={categories} />
 
-          <TodoList deleteTodo={deleteTodo} todos={todos} categories={categories} />
+      <TodoList deleteTodo={deleteTodo} completeTodo={completeTodo} todos={todos} categories={categories} />
 
-          <CompletedSection deleteTodo={deleteTodo} todos={completedTodos}  />
-        </Container>
-      </AppDiv>
-    </GivelifyThemeProvider>
-    </>
+      <CompletedSection deleteTodo={deleteTodo} todos={completedTodos}  />
+    </Container>
   );
 }
 
 export default App;
-
-const AppDiv = styled.div`
-  background: ${props => props.theme.givelifyTheme.colors.grayBackground};
-`;
 
 const Container = styled.div`
   margin: 0 auto;

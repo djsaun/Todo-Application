@@ -95,7 +95,7 @@ const FormInput = styled.input`
 const FormControls = styled.div`
   display: flex;
   align-items: center;
-  justify-items: flex-end;
+  justify-content: flex-end;
 `;
 
 const Button = styled.button`
