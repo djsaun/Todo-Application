@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import styled from 'styled-components';
 import { rgba } from 'polished';
 import plus from '../icons/plus.svg';
@@ -8,7 +8,7 @@ const TodoForm = props => {
   const [text, setText] = useState('');
   const [categoryList, setCategoryList] = useState([])
   const [filteredCategoryList, setFilteredCategoryList] = useState([]);
-  const [inputFocus, setInputFocus] = useState(false);
+  const [formFocused, setFormFocused] = useState(false);
 
   // Todo item category defaults to no date
   const [category, setCategory] = useState('no_date');
@@ -22,12 +22,13 @@ const TodoForm = props => {
     setFilteredCategoryList(props.categories.filter(category => category.id !== 'no_date'))
   }, [props.categories]);
 
+
   // Filter through all categories and return those that will display a button on the frontend
   const filteredCategories = categoryList && categoryList.filter(category => category.includeBtn);
 
   return (
-    <FormContainer>
-      <FormInput value={text} onBlur={() => setInputFocus(!inputFocus)} selectedCategory={category} onChange={e => setText(e.target.value)} placeholder="What do you need to get done?" />
+    <FormContainer focused={formFocused} selectedCategory={category}>
+      <FormInput value={text} onFocus={() => setFormFocused(true)} onBlur={() => setFormFocused(false)} selectedCategory={category} onChange={e => setText(e.target.value)} placeholder="What do you need to get done?" />
 
       <FormControls>
         {/* Loop through all filtered categories and display them as buttons;
@@ -47,7 +48,10 @@ const FormContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 100px;
-  box-shadow: 0 4px 8px ${props => props.theme.givelifyTheme.colors.grayShadow}
+  background: ${props => props.theme.givelifyTheme.colors.white};
+  border-radius: 12px;
+  box-shadow: ${props => props.focused ? `0 4px 32px ${rgba(props.theme.givelifyTheme.colors.categories[props.selectedCategory], .12)}` : `0 4px 8px ${props => props.theme.givelifyTheme.colors.grayShadow}`};
+  transition: all .3s ease;
 `;
 
 const FormInput = styled.input`

@@ -6,6 +6,7 @@ import {
 import logo from '../icons/logo.svg';
 import GivelifyThemeProvider from './GivelifyThemeProvider';
 import TodoForm from './TodoForm';
+import TodoList from './TodoList';
 
 const categoryList = [{
     id: 'today',
@@ -44,10 +45,13 @@ function App() {
     <Normalize />
     <GivelifyThemeProvider>
       <AppDiv>
-        <Header>
-          <img src={logo} alt="Givelify Todo Application" />
-        </Header>
-        <TodoForm categories={categories} />
+        <Container>
+          <Header>
+            <img src={logo} alt="Givelify Todo Application" />
+          </Header>
+          <TodoForm categories={categories} />
+          <TodoList todos={todos} categories={categories} />
+        </Container>
       </AppDiv>
     </GivelifyThemeProvider>
     </>
@@ -57,10 +61,13 @@ function App() {
 export default App;
 
 const AppDiv = styled.div`
-  margin: 0 auto;
   background: ${props => props.theme.givelifyTheme.colors.grayBackground};
-  max-width: 1000px;
 `;
+
+const Container = styled.div`
+  margin: 0 auto;
+  max-width: 1000px;
+`
 
 const Header = styled.header`
   padding: 55px 40px 50px;
