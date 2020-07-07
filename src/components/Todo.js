@@ -44,6 +44,7 @@ const Todo = props => {
 }
 
 const TodoItem = styled.div`
+  margin-top: 30px;
   padding: 18px 0;
   display: flex;
   justify-content: space-between;
@@ -112,6 +113,7 @@ const Icon = styled.div`
 `;
 
 const Text = styled.p`
+  margin: 0;
   font-size: 24px;
   color: ${props => props.theme.givelifyTheme.colors.gray900};
 `;
