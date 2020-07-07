@@ -24,7 +24,7 @@ const TodoForm = props => {
 
 
   // Filter through all categories and return those that will display a button on the frontend
-  const filteredCategories = categoryList && categoryList.filter(category => category.includeBtn);
+  const filteredCategories = categoryList && categoryList.filter(category => category.btn);
 
   return (
     <FormContainer focused={formFocused} selectedCategory={category}>
@@ -44,6 +44,7 @@ const TodoForm = props => {
 };
 
 const FormContainer = styled.div`
+  margin-bottom: 55px;
   padding: 30px 35px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);

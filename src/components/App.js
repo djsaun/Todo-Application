@@ -11,24 +11,46 @@ import TodoList from './TodoList';
 const categoryList = [{
     id: 'today',
     title: 'Today',
-    includeBtn: true
+    btn: true
   },
   {
     id: 'tomorrow',
     title: 'Tomorrow',
-    includeBtn: true
+    btn: true
   },
   {
     id: 'this_week',
     title: 'This Week',
-    includeBtn: true
+    btn: true
   },
   {
     id: 'no_date',
     title: 'No Date',
-    includeBtn: false
+    btn: false
   }
 ];
+
+const todoList = [{
+  id: 1,
+  text: 'Test Item One',
+  category: 'today',
+  isCompleted: false,
+}, {
+  id: 2,
+  text: 'Test Item Two',
+  category: 'tomorrow',
+  isCompleted: false,
+}, {
+  id: 3,
+  text: 'Test Item Three',
+  category: 'no_date',
+  isCompleted: true,
+}, {
+  id: 4,
+  text: 'Test Item Four',
+  category: 'today',
+  isCompleted: false,
+}]
 
 function App() {
   // Initialize state
@@ -40,6 +62,10 @@ function App() {
     setCategories(categoryList)
   }, []);
 
+   useEffect(() => {
+     setTodos(todoList)
+   }, []);
+
   return (
     <>
     <Normalize />
@@ -50,6 +76,7 @@ function App() {
             <img src={logo} alt="Givelify Todo Application" />
           </Header>
           <TodoForm categories={categories} />
+
           <TodoList todos={todos} categories={categories} />
         </Container>
       </AppDiv>
