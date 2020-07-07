@@ -12,6 +12,7 @@ import sun from '../icons/sun.svg';
 const givelifyTheme = {
   colors: {
     gray900: '#0A1323',
+    gray800: '#3B424E',
     gray700: '#6B6F7C',
     gray500: '#848791',
     gray300: '#E4EBF1',

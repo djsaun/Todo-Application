@@ -7,9 +7,9 @@ const Todo = props => {
   const { category, categories, text, isCompleted} = props;
 
   return (
-    <TodoItem complete={isCompleted}>
+    <TodoItem complete={isCompleted} className={isCompleted ? 'complete' : ''}>
       <div>
-        <Icon />
+        <Icon className='icon' />
         <Text>{text}</Text>
       </div>
 
@@ -39,6 +39,17 @@ const TodoItem = styled.div`
   > div {
     display: flex;
     align-items: center;
+  }
+
+  &.complete {
+    .icon {
+      border-color: ${props => props.theme.givelifyTheme.colors.green};
+
+      &::after {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
   }
 `;
 

@@ -7,6 +7,7 @@ import logo from '../icons/logo.svg';
 import GivelifyThemeProvider from './GivelifyThemeProvider';
 import TodoForm from './TodoForm';
 import TodoList from './TodoList';
+import CompletedSection from './CompletedSection';
 
 const categoryList = [{
     id: 'today',
@@ -34,7 +35,7 @@ const todoList = [{
   id: 1,
   text: 'Test Item One',
   category: 'today',
-  isCompleted: false,
+  isCompleted: true,
 }, {
   id: 2,
   text: 'Test Item Two',
@@ -44,7 +45,7 @@ const todoList = [{
   id: 3,
   text: 'Test Item Three',
   category: 'no_date',
-  isCompleted: true,
+  isCompleted: false,
 }, {
   id: 4,
   text: 'Test Item Four',
@@ -56,6 +57,7 @@ function App() {
   // Initialize state
   const [categories, setCategories] = useState([])
   const [todos, setTodos] = useState([]);
+  const [completedTodos, setCompletedTodos] = useState([]);
 
   // Update the categories state on the initial render
   useEffect(() => {
@@ -65,6 +67,12 @@ function App() {
    useEffect(() => {
      setTodos(todoList)
    }, []);
+
+   useEffect(() => {
+     const filteredTodos = todos.filter(todo => todo.isCompleted === true);
+
+     setCompletedTodos(filteredTodos);
+   }, [todos])
 
   return (
     <>
@@ -78,6 +86,8 @@ function App() {
           <TodoForm categories={categories} />
 
           <TodoList todos={todos} categories={categories} />
+
+          <CompletedSection todos={completedTodos} />
         </Container>
       </AppDiv>
     </GivelifyThemeProvider>
