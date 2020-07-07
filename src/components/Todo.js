@@ -1,35 +1,44 @@
 import React from 'react';
 import styled from 'styled-components';
 import {rgba} from 'polished';
+import FunctionsContext from '../contexts/functions';
 import checkmark from '../icons/checkmark.svg';
 import close from '../icons/close_icon.svg';
 
 const Todo = props => {
-  const { deleteTodo, completeTodo, updateCategory, id, category, categories, text, isCompleted} = props;
+  const {id, category, categories, text, isCompleted} = props;
 
   return (
     <TodoItem complete={isCompleted} className={isCompleted ? 'complete' : ''}>
-      <div>
-        <Icon className='icon' onClick={() => completeTodo(id)} />
-        <Text>{text}</Text>
-      </div>
+      <FunctionsContext.Consumer>
+        {({completeTodo, updateCategory, deleteTodo}) => (
+          <>
+            <div>
+              <Icon className='icon' onClick={() => completeTodo(id)} />
+              <Text>{text}</Text>
+            </div>
 
-      {!isCompleted ? 
-        <div>
-          <CategorySelect value={category} onChange={(e) => updateCategory(id, e.target.value)}>
-            {categories && categories.map(cat => {
-              return <option key={cat.id} value={cat.id}>{cat.title}</option>
-            })}
-          </CategorySelect>
+            {!isCompleted ? 
+              <div>
+                <CategorySelect value={category} onChange={(e) => updateCategory(id, e.target.value)}>
+                  {categories && categories.map(cat => {
+                    return <option key={cat.id} value={cat.id}>{cat.title}</option>
+                  })}
+                </CategorySelect>
 
-          <Button onClick={() => deleteTodo(id)} aria-label="Delete Todo" />
-        </div>
-      : 
-        <div>
-          <Completed>Completed</Completed>
-          <Button onClick={() => deleteTodo(id)} aria-label="Delete Todo" />
-        </div>
-      }
+                <Button onClick={() => deleteTodo(id)} aria-label="Delete Todo" />
+              </div>
+            : 
+              <div>
+                <Completed>Completed</Completed>
+                <Button onClick={() => deleteTodo(id)} aria-label="Delete Todo" />
+              </div>
+            }
+          </>
+        )}
+      
+      </FunctionsContext.Consumer>
+
     </TodoItem>
   )
 }

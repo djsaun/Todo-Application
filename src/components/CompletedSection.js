@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Todo from './Todo';
 
 const CompletedSection = props => {
-  const {todos, deleteTodo} = props;
+  const {todos} = props;
 
   // Hide completed todos by default
   const [showTodos, setShowTodos] = useState(true);
@@ -21,9 +21,9 @@ const CompletedSection = props => {
       }
 
       {todos && todos.length > 0 && showTodos && 
-        <ResultsList>
-          {todos.map(todo => <Todo key={todo.id} {...todo} deleteTodo={deleteTodo} />)}
-        </ResultsList>} 
+        <div>
+          {todos.map(todo => <Todo key={todo.id} {...todo} />)}
+        </div>} 
     </Results>
   )
 }
@@ -41,7 +41,5 @@ const DisplayText = styled.p`
   text-align: center;
   cursor: pointer;
 `;
-
-const ResultsList = styled.div``;
 
 export default CompletedSection;

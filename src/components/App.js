@@ -4,28 +4,8 @@ import logo from '../icons/logo.svg';
 import TodoForm from './TodoForm';
 import TodoList from './TodoList';
 import CompletedSection from './CompletedSection';
-
-const categoryList = [{
-    id: 'today',
-    title: 'Today',
-    btn: true
-  },
-  {
-    id: 'tomorrow',
-    title: 'Tomorrow',
-    btn: true
-  },
-  {
-    id: 'this_week',
-    title: 'This Week',
-    btn: true
-  },
-  {
-    id: 'no_date',
-    title: 'No Date',
-    btn: false
-  }
-];
+import FunctionsContext from '../contexts/functions';
+import { categoryList } from '../utils/categoryList';
 
 function App() {
   // Initialize state
@@ -56,7 +36,6 @@ function App() {
     const todosLength = todos.length;
 
     // Copy over the existing todos state and append the new todo to the array
-    // Add one to the todosLength variable to set a unique id for each todo 
     const updatedTodos = [...todos, {id: todosLength, text, category, isCompleted: false}];
 
     // Update the todos state
@@ -111,17 +90,28 @@ function App() {
     setTodos(todoItems);
   }
 
+  // Create an object that holds our function values
+  // Pass this to the FunctionsContext.Provider value prop to make the functions
+  // accessible to deeply nested components
+  const functions = {
+    completeTodo,
+    updateCategory,
+    deleteTodo
+  }
+
   return (
     <Container>
       <Header>
         <img src={logo} alt="Givelify Todo Application" />
       </Header>
 
-      <TodoForm addTodo={addTodo} categories={categories} />
+      <FunctionsContext.Provider value={functions}>
+        <TodoForm addTodo={addTodo} categories={categories} />
 
-      <TodoList deleteTodo={deleteTodo} completeTodo={completeTodo} todos={todos} categories={categories} updateCategory={updateCategory} />
+        <TodoList todos={todos} categories={categories} />
 
-      <CompletedSection deleteTodo={deleteTodo} todos={completedTodos}  />
+        <CompletedSection deleteTodo={deleteTodo} todos={completedTodos}  />
+      </FunctionsContext.Provider>
     </Container>
   );
 }
