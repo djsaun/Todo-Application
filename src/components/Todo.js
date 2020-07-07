@@ -5,7 +5,7 @@ import checkmark from '../icons/checkmark.svg';
 import close from '../icons/close_icon.svg';
 
 const Todo = props => {
-  const { category, categories, text, isCompleted} = props;
+  const { deleteTodo, id, category, categories, text, isCompleted} = props;
 
   return (
     <TodoItem complete={isCompleted} className={isCompleted ? 'complete' : ''}>
@@ -22,12 +22,12 @@ const Todo = props => {
             })}
           </CategorySelect>
 
-          <Button aria-label="Delete Todo" />
+          <Button onClick={() => deleteTodo(id)} aria-label="Delete Todo" />
         </div>
       : 
         <div>
           <Completed>Completed</Completed>
-          <Button aria-label="Delete Todo" />
+          <Button onClick={() => deleteTodo(id)} aria-label="Delete Todo" />
         </div>
       }
     </TodoItem>

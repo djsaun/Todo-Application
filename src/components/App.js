@@ -61,10 +61,29 @@ function App() {
 
     // Copy over the existing todos state and append the new todo to the array
     // Add one to the todosLength variable to set a unique id for each todo 
-    const updatedTodos = [...todos, {id: todosLength + 1, text, category, isCompleted: false}];
+    const updatedTodos = [...todos, {id: todosLength, text, category, isCompleted: false}];
 
     // Update the todos state
     setTodos(updatedTodos);
+  }
+
+  const deleteTodo = id => {
+    // Copy over the existing todos state
+    const todoItems = [...todos];
+
+    // Let the user confirm that the todo item should be deleted
+    const confirm = window.confirm('Are you sure you want to delete this?');
+
+    if (confirm) {
+      // Remove the targeted todo item from the todos array 
+      todoItems.splice(id, 1);
+    } else {
+      // Otherwise, return and keep the todo item in state
+      return;
+    }
+
+    // Update the todos state
+    setTodos(todoItems);
   }
 
   return (
@@ -81,9 +100,9 @@ function App() {
           </Header>
           <TodoForm addTodo={addTodo} categories={categories} />
 
-          <TodoList todos={todos} categories={categories} />
+          <TodoList deleteTodo={deleteTodo} todos={todos} categories={categories} />
 
-          <CompletedSection todos={completedTodos} />
+          <CompletedSection deleteTodo={deleteTodo} todos={completedTodos}  />
         </Container>
       </AppDiv>
     </GivelifyThemeProvider>

@@ -3,8 +3,8 @@ import styled from 'styled-components';
 import Todo from './Todo';
 
 const Category = props => {
-  const { id, title, todos, categories } = props;
-    
+  const { id, title, todos, categories, deleteTodo } = props;
+
   return (
     <CategoryItem>
       <CategoryInfo>
@@ -15,7 +15,7 @@ const Category = props => {
         <Count>{todos.length} {todos.length === 1 ? 'todo' : 'todos'}</Count>
       </CategoryInfo>
 
-      {todos && todos.map(todo => <Todo key={todo.id} {...todo} categories={categories} />)}
+      {todos && todos.map(todo => <Todo key={todo.id} {...todo} deleteTodo={deleteTodo} categories={categories} />)}
     </CategoryItem>
   )
 }
