@@ -5,6 +5,7 @@ import plus from '../icons/plus.svg';
 import plusWhite from '../icons/plus_white.svg'
 
 const TodoForm = props => {
+  const { addTodo } = props;
   const [text, setText] = useState('');
   const [categoryList, setCategoryList] = useState([])
   const [filteredCategoryList, setFilteredCategoryList] = useState([]);
@@ -25,25 +26,44 @@ const TodoForm = props => {
 
   // Filter through all categories and return those that will display a button on the frontend
   const filteredCategories = categoryList && categoryList.filter(category => category.btn);
+  
+  const handleSubmit = (e) => {
+
+    // Prevent the page from refreshing on form submit
+    e.preventDefault();
+
+    // Prevent the form from submitting if the text or category states are 
+    if (!text || !category) {
+      return
+    }
+
+    // Pass the submitted todo text and category to the addTodo function
+    // This will create a new todo item and append it to the existing state object
+    addTodo(text, category);
+
+    // Reset the form fields
+    setText('');
+    setCategory('no_date');
+  }
 
   return (
-    <FormContainer focused={formFocused} selectedCategory={category}>
-      <FormInput value={text} onFocus={() => setFormFocused(true)} onBlur={() => setFormFocused(false)} onChange={e => setText(e.target.value)} placeholder="What do you need to get done?" />
+    <FormContainer focused={formFocused} selectedCategory={category} onSubmit={handleSubmit}>
+      <FormInput required value={text} onFocus={() => setFormFocused(true)} onBlur={() => !text.length ? setFormFocused(false) : setFormFocused(true)} onChange={e => setText(e.target.value)} placeholder="What do you need to get done?" />
 
       <FormControls>
         {/* Loop through all filtered categories and display them as buttons;
           Set the category for the todo item on button click
           If the current category button is clicked again, set the category to the default no_date
         */}
-        {filteredCategories && filteredCategoryList.map(cat => <Button key={cat.id} id={cat.id} className={category === cat.id ? 'active' : ''} onClick={() => category !== cat.id ? setCategory(cat.id) : setCategory('no_date')}>{cat.title}</Button>)}
+        {filteredCategories && filteredCategoryList.map(cat => <Button key={cat.id} id={cat.id} className={category === cat.id ? 'active' : ''} onClick={(e) => {e.preventDefault(); category !== cat.id ? setCategory(cat.id) : setCategory('no_date')}}>{cat.title}</Button>)}
 
-        <AddButton selectedCategory={category}></AddButton>
+        <AddButton type="submit" selectedCategory={category} aria-label="Add Todo"></AddButton>
       </FormControls>
     </FormContainer>
   )
 };
 
-const FormContainer = styled.div`
+const FormContainer = styled.form`
   margin-bottom: 55px;
   padding: 30px 35px;
   display: grid;
@@ -75,6 +95,7 @@ const FormInput = styled.input`
 const FormControls = styled.div`
   display: flex;
   align-items: center;
+  justify-items: flex-end;
 `;
 
 const Button = styled.button`

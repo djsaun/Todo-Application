@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useReducer} from 'react';
+import React, {useState, useEffect} from 'react';
 import styled from 'styled-components'
 import {
   Normalize
@@ -31,28 +31,6 @@ const categoryList = [{
   }
 ];
 
-const todoList = [{
-  id: 1,
-  text: 'Test Item One',
-  category: 'today',
-  isCompleted: true,
-}, {
-  id: 2,
-  text: 'Test Item Two',
-  category: 'tomorrow',
-  isCompleted: false,
-}, {
-  id: 3,
-  text: 'Test Item Three',
-  category: 'no_date',
-  isCompleted: false,
-}, {
-  id: 4,
-  text: 'Test Item Four',
-  category: 'today',
-  isCompleted: false,
-}]
-
 function App() {
   // Initialize state
   const [categories, setCategories] = useState([])
@@ -64,26 +42,44 @@ function App() {
     setCategories(categoryList)
   }, []);
 
-   useEffect(() => {
-     setTodos(todoList)
-   }, []);
+  // Update the todos state whenever there's an update made to a todo item (added, edited, or deleted)
+  useEffect(() => {
+    setTodos(todos)
+  }, [todos]);
 
-   useEffect(() => {
-     const filteredTodos = todos.filter(todo => todo.isCompleted === true);
+  // Return only completed todo items and add them to state
+  // Pass them down via props to the CompletedSection component
+  useEffect(() => {
+    const filteredTodos = todos.filter(todo => todo.isCompleted === true);
 
-     setCompletedTodos(filteredTodos);
-   }, [todos])
+    setCompletedTodos(filteredTodos);
+  }, [todos])
+
+  const addTodo = (text, category) => {
+    // Get the current number of todos  
+    const todosLength = todos.length;
+
+    // Copy over the existing todos state and append the new todo to the array
+    // Add one to the todosLength variable to set a unique id for each todo 
+    const updatedTodos = [...todos, {id: todosLength + 1, text, category, isCompleted: false}];
+
+    // Update the todos state
+    setTodos(updatedTodos);
+  }
 
   return (
     <>
+    {/* Reset CSS */}
     <Normalize />
+
+    {/* Expose all of the components to the custom givelify theme provider and theme */}
     <GivelifyThemeProvider>
       <AppDiv>
         <Container>
           <Header>
             <img src={logo} alt="Givelify Todo Application" />
           </Header>
-          <TodoForm categories={categories} />
+          <TodoForm addTodo={addTodo} categories={categories} />
 
           <TodoList todos={todos} categories={categories} />
 

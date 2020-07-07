@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import {rgba} from 'polished';
 import checkmark from '../icons/checkmark.svg';
+import close from '../icons/close_icon.svg';
 
 const Todo = props => {
   const { category, categories, text, isCompleted} = props;
@@ -21,9 +22,14 @@ const Todo = props => {
             })}
           </CategorySelect>
 
-          <Button>X</Button>
+          <Button aria-label="Delete Todo" />
         </div>
-      : <Completed>Completed</Completed>}
+      : 
+        <div>
+          <Completed>Completed</Completed>
+          <Button aria-label="Delete Todo" />
+        </div>
+      }
     </TodoItem>
   )
 }
@@ -109,7 +115,14 @@ const CategorySelect = styled.select`
 `;
 
 const Button = styled.button`
-  background: none;
+  color: ${props => props.theme.givelifyTheme.colors.gray400};
+  width: 24px;
+  height: 24px;
+  background-color: transparent;
+  background-image: url(${close});
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 24px 24px;
   border: none;
   cursor: pointer;
   transform: rotate(0);
