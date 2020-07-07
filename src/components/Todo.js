@@ -44,7 +44,7 @@ const Todo = props => {
 }
 
 const TodoItem = styled.div`
-  padding: 18px 20px;
+  padding: 18px 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -57,6 +57,8 @@ const TodoItem = styled.div`
   }
 
   &.complete {
+    padding: 18px 20px;
+
     .icon {
       border-color: ${props => props.theme.givelifyTheme.colors.green};
 
@@ -78,7 +80,7 @@ const Icon = styled.div`
   height: 36px;
   background-image: none;
   background-color: transparent;
-  border: 3px solid ${props => props.theme.givelifyTheme.colors.gray300}; 
+  border: 2px solid ${props => props.theme.givelifyTheme.colors.gray300}; 
   border-radius: 100%;
   cursor: pointer;
   transition: all .3s ease;
@@ -115,12 +117,21 @@ const Text = styled.p`
 `;
 
 const CategorySelect = styled.select`
+  margin-right: 25px;
   padding: 12px 16px;
   color: ${props => props.theme.givelifyTheme.colors.categories[props.value]};
   background: ${props => rgba(props.theme.givelifyTheme.colors.categories[props.value], .08)};
   border: none;
   border-radius: 100px;
   cursor: pointer;
+  outline: none;
+
+  > option {
+    color: ${props => props.theme.givelifyTheme.colors.gray700};
+    background: ${props => props.theme.givelifyTheme.colors.white};
+    border-color: ${props => props.theme.givelifyTheme.colors.gray700};
+    cursor: pointer;
+  }
 `;
 
 const Button = styled.button`
@@ -143,6 +154,7 @@ const Button = styled.button`
 `;
 
 const Completed = styled.p`
+  margin-right: 25px;
   color: ${props => props.theme.givelifyTheme.colors.green};
 `;
 

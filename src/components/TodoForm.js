@@ -74,6 +74,10 @@ const FormContainer = styled.form`
   box-shadow: ${props => props.focused ? `0 4px 32px ${rgba(props.theme.givelifyTheme.colors.categories[props.selectedCategory], .12)}` : `0 4px 8px ${props => props.theme.givelifyTheme.colors.grayShadow}`};
   transition: all .3s ease;
 
+  @media (max-width: 1024px) {
+    display: block;
+  }
+
   > input {
     caret-color: ${ props => props.selectedCategory !== 'no_date' ? props.theme.givelifyTheme.colors.categories[props.selectedCategory] : props.theme.givelifyTheme.colors.gray900};
   }
@@ -87,6 +91,10 @@ const FormInput = styled.input`
   border: none;
   outline: none;
 
+  @media (max-width: 1024px) {
+    width: 100%;
+  }
+
   &::placeholder {
     color: ${props => props.theme.givelifyTheme.colors.gray900}
   }
@@ -96,6 +104,11 @@ const FormControls = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-end;
+
+  @media (max-width: 1024px) {
+    margin-top: 20px;
+    justify-content: flex-start;
+  }
 `;
 
 const Button = styled.button`

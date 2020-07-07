@@ -40,6 +40,8 @@ function App() {
 
     // Update the todos state
     setTodos(updatedTodos);
+
+    alert('Your todo item has been created!');
   }
 
   const completeTodo = (id) => {
