@@ -67,16 +67,25 @@ function App() {
     setTodos(updatedTodos);
   }
 
-  const deleteTodo = id => {
+  const completeTodo = (id) => {
     // Copy over the existing todos state
     const todoItems = [...todos];
 
+    
+
+  }
+
+  const deleteTodo = id => {
+    // Copy over the existing todos state
+    let todoItems = [...todos];
+   
     // Let the user confirm that the todo item should be deleted
     const confirm = window.confirm('Are you sure you want to delete this?');
 
     if (confirm) {
-      // Remove the targeted todo item from the todos array 
-      todoItems.splice(id, 1);
+      // Loop over all of the todos and filter the targeted todo out of the todoItems array
+      todoItems = todoItems.filter(item => item.id !== id );
+
     } else {
       // Otherwise, return and keep the todo item in state
       return;
