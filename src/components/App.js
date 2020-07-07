@@ -79,6 +79,22 @@ function App() {
     setTodos(todoItems);
   }
 
+  const updateCategory = (id, category) => {
+    // Copy over the existing todos state
+    const todoItems = [...todos];
+
+    // Let the user confirm that they want to update the item's category
+    const confirm = window.confirm("Are you sure you want to update this item's category?");
+
+    if (confirm) {
+      // Find the todo item in the todos state array and change its category value
+      todoItems.find(item => item.id === id).category = category;
+    }
+
+    // Update the todos state
+    setTodos(todoItems);
+  }
+
   const deleteTodo = id => {
     // Copy over the existing todos state
     let todoItems = [...todos];
@@ -103,7 +119,7 @@ function App() {
 
       <TodoForm addTodo={addTodo} categories={categories} />
 
-      <TodoList deleteTodo={deleteTodo} completeTodo={completeTodo} todos={todos} categories={categories} />
+      <TodoList deleteTodo={deleteTodo} completeTodo={completeTodo} todos={todos} categories={categories} updateCategory={updateCategory} />
 
       <CompletedSection deleteTodo={deleteTodo} todos={completedTodos}  />
     </Container>

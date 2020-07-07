@@ -5,7 +5,7 @@ import checkmark from '../icons/checkmark.svg';
 import close from '../icons/close_icon.svg';
 
 const Todo = props => {
-  const { deleteTodo, completeTodo, id, category, categories, text, isCompleted} = props;
+  const { deleteTodo, completeTodo, updateCategory, id, category, categories, text, isCompleted} = props;
 
   return (
     <TodoItem complete={isCompleted} className={isCompleted ? 'complete' : ''}>
@@ -16,7 +16,7 @@ const Todo = props => {
 
       {!isCompleted ? 
         <div>
-          <CategorySelect value={category}>
+          <CategorySelect value={category} onChange={(e) => updateCategory(id, e.target.value)}>
             {categories && categories.map(cat => {
               return <option key={cat.id} value={cat.id}>{cat.title}</option>
             })}
