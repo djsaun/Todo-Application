@@ -1,68 +1,29 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Givelify Todo Application
 
-## Available Scripts
+This todo application is designed to allow users to create, modify, and delete todo items. Users have the ability to assign and reassign todo items to specific date categories (e.g. Today, Tomorrow, Next Week). Active todo items are shown in association with their respective categories. Completed items can be viewed at the bottom of the application.
 
-In the project directory, you can run:
+This application was built using React with [Create React App](https://create-react-app.dev/) as its starter template. Styling was done using [styled-components](https://styled-components.com/).
 
-### `yarn start`
+## Getting Started
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Please run the following commands to load the application locally:
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+```
+git clone https://github.com/djsaun/Givelify-Todo-Application.git
 
-### `yarn test`
+cd Givelify-Todo-Application
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+yarn && yarn start
+```
 
-### `yarn build`
+The application will run in development mode and will be accessible at [http://localhost:3000](http://localhost:3000)
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Future Todos
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+The following updates should be made to the application in the future:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+[ ] Set up a database to persist application data.\
+[ ] Configure authentication so that users can only access their personal todo items.\
+[ ] Set up a [Storybook](https://storybook.js.org) instance to develop and view components in isolation of each other and the application.\
+[ ] Configure [Cypress](https://www.cypress.io/) for end-to-end testing of application components and functionality. \
+[ ] Replace the category select component (right now it's using the default HTML select element) with a custom solution. This would allow us to further customize the options styling and dropdown arrow placement within the select element.
