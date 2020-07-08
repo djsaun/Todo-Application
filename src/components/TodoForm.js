@@ -1,38 +1,26 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components';
 import { rgba } from 'polished';
 import plus from '../icons/plus.svg';
 import plusWhite from '../icons/plus_white.svg'
 
 const TodoForm = props => {
-  const { addTodo } = props;
+  const {addTodo, categories} = props;
   const [text, setText] = useState('');
-  const [categoryList, setCategoryList] = useState([])
-  const [filteredCategoryList, setFilteredCategoryList] = useState([]);
   const [formFocused, setFormFocused] = useState(false);
 
   // Todo item category defaults to no date
   const [category, setCategory] = useState('no_date');
 
-  useEffect(() => {
-    // Update the category list whenever the prop updates
-    setCategoryList(props.categories);
-
-    // The filtered category list contains the items that we're going to display on the frontend
-    // No Date is not a valid option, so we'll exclude it from our state here if it exists
-    setFilteredCategoryList(props.categories.filter(category => category.id !== 'no_date'))
-  }, [props.categories]);
-
-
   // Filter through all categories and return those that will display a button on the frontend
-  const filteredCategories = categoryList && categoryList.filter(category => category.btn);
+  const filteredCategories = categories && categories.filter(category => category.btn);
   
   const handleSubmit = (e) => {
 
     // Prevent the page from refreshing on form submit
     e.preventDefault();
 
-    // Prevent the form from submitting if the text or category states are 
+    // Prevent the form from submitting if the text or category states are empty
     if (!text || !category) {
       return
     }
@@ -55,7 +43,7 @@ const TodoForm = props => {
           Set the category for the todo item on button click
           If the current category button is clicked again, set the category to the default no_date
         */}
-        {filteredCategories && filteredCategoryList.map(cat => <Button key={cat.id} id={cat.id} className={category === cat.id ? 'active' : ''} onClick={(e) => {e.preventDefault(); category !== cat.id ? setCategory(cat.id) : setCategory('no_date')}}>{cat.title}</Button>)}
+        {filteredCategories && filteredCategories.map(cat => <Button key={cat.id} id={cat.id} className={category === cat.id ? 'active' : ''} onClick={(e) => {e.preventDefault(); category !== cat.id ? setCategory(cat.id) : setCategory('no_date')}}>{cat.title}</Button>)}
 
         <AddButton type="submit" selectedCategory={category} aria-label="Add Todo"></AddButton>
       </FormControls>

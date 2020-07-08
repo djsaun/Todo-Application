@@ -14,7 +14,7 @@ const Todo = props => {
         {({completeTodo, updateCategory, deleteTodo}) => (
           <>
             <div>
-              <Icon className='icon' onClick={() => completeTodo(id)} />
+              <Icon className='icon' onClick={() => !isCompleted ? completeTodo(id) : null} />
               <Text>{text}</Text>
             </div>
 
@@ -62,6 +62,7 @@ const TodoItem = styled.div`
 
     .icon {
       border-color: ${props => props.theme.givelifyTheme.colors.green};
+      cursor: default;
 
       &::after {
         opacity: 1;
