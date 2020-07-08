@@ -110,7 +110,7 @@ const Button = styled.button`
   cursor: pointer;
   transition: all .3s ease;
 
-  &.active, &:hover, &:active, &:focus {
+  &.active, &:hover {
     color: ${props => props.theme.givelifyTheme.colors.categories[props.id]};
     background: ${props => rgba(props.theme.givelifyTheme.colors.categories[props.id], .1)};
   }
