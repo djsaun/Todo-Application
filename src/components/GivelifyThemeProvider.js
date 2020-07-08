@@ -1,7 +1,5 @@
 import React from 'react';
-import {
-  ThemeProvider
-} from 'styled-components';
+import { ThemeProvider } from 'styled-components';
 import calendar from '../icons/calendar.svg';
 import folder from '../icons/folder.svg';
 import inbox from '../icons/inbox.svg';
@@ -52,7 +50,7 @@ const GivelifyThemeProvider = (props) => {
     theme
   } > {
     props.children
-  } < /ThemeProvider>;
+  } </ThemeProvider>;
 };
 
 export default GivelifyThemeProvider;

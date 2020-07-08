@@ -4,7 +4,7 @@
 
 This todo application is designed to allow users to create, modify, and delete todo items. Users have the ability to assign and reassign todo items to specific date categories (e.g. Today, Tomorrow, Next Week). Active todo items are shown in association with their respective categories. Completed items can be viewed at the bottom of the application.
 
-This application was built using React with [Create React App](https://create-react-app.dev/) as its starter template. Styling was done using [styled-components](https://styled-components.com/).
+This application was built using React with [Create React App](https://create-react-app.dev/) as its starter template and uses React Hooks for state management. Styling was done using [styled-components](https://styled-components.com/) and the application makes use of styled-components' [theme provider](https://styled-components.com/docs/advanced#theming) to give all components access to the Givelify theme (defined in [src\components\GivelifyThemeProvider.js](src\components\GivelifyThemeProvider.js)).
 
 ## Getting Started
 
