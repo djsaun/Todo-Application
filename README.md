@@ -1,6 +1,6 @@
 # Todo Application
 
-[View Demo](https://demo-todo-application.herokuapp.com/)
+[View Demo](https://custom-todo-application.herokuapp.com/)
 
 This todo application is designed to allow users to create, modify, and delete todo items. Users have the ability to assign and reassign todo items to specific date categories (e.g. Today, Tomorrow, Next Week). Active todo items are shown in association with their respective categories. Completed items can be viewed at the bottom of the application.
 
