@@ -49,7 +49,7 @@ const TodoItem = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: ${props => props.complete ? rgba(props.theme.givelifyTheme.colors.green, .04) : props.theme.givelifyTheme.colors.white};
+  background-color: ${props => props.complete ? rgba(props.theme.customTheme.colors.green, .04) : props.theme.customTheme.colors.white};
   border-radius: 12px;
 
   > div {
@@ -61,7 +61,7 @@ const TodoItem = styled.div`
     padding: 18px 20px;
 
     .icon {
-      border-color: ${props => props.theme.givelifyTheme.colors.green};
+      border-color: ${props => props.theme.customTheme.colors.green};
       cursor: default;
 
       &::after {
@@ -82,7 +82,7 @@ const Icon = styled.div`
   height: 36px;
   background-image: none;
   background-color: transparent;
-  border: 2px solid ${props => props.theme.givelifyTheme.colors.gray300}; 
+  border: 2px solid ${props => props.theme.customTheme.colors.gray300}; 
   border-radius: 100%;
   cursor: pointer;
   transition: all .3s ease;
@@ -103,8 +103,8 @@ const Icon = styled.div`
   }
 
   &:hover, &:active, &:focus {
-    background-color: ${props => rgba(props.theme.givelifyTheme.colors.green, .04)}; 
-    border-color: ${props => props.theme.givelifyTheme.colors.green};
+    background-color: ${props => rgba(props.theme.customTheme.colors.green, .04)}; 
+    border-color: ${props => props.theme.customTheme.colors.green};
 
     &::after {
       opacity: 1;
@@ -116,29 +116,29 @@ const Icon = styled.div`
 const Text = styled.p`
   margin: 0;
   font-size: 24px;
-  color: ${props => props.theme.givelifyTheme.colors.gray900};
+  color: ${props => props.theme.customTheme.colors.gray900};
 `;
 
 const CategorySelect = styled.select`
   margin-right: 25px;
   padding: 12px 16px;
-  color: ${props => props.theme.givelifyTheme.colors.categories[props.value]};
-  background: ${props => rgba(props.theme.givelifyTheme.colors.categories[props.value], .08)};
+  color: ${props => props.theme.customTheme.colors.categories[props.value]};
+  background: ${props => rgba(props.theme.customTheme.colors.categories[props.value], .08)};
   border: none;
   border-radius: 100px;
   cursor: pointer;
   outline: none;
 
   > option {
-    color: ${props => props.theme.givelifyTheme.colors.gray700};
-    background: ${props => props.theme.givelifyTheme.colors.white};
-    border-color: ${props => props.theme.givelifyTheme.colors.gray700};
+    color: ${props => props.theme.customTheme.colors.gray700};
+    background: ${props => props.theme.customTheme.colors.white};
+    border-color: ${props => props.theme.customTheme.colors.gray700};
     cursor: pointer;
   }
 `;
 
 const Button = styled.button`
-  color: ${props => props.theme.givelifyTheme.colors.gray400};
+  color: ${props => props.theme.customTheme.colors.gray400};
   width: 24px;
   height: 24px;
   background-color: transparent;
@@ -158,7 +158,7 @@ const Button = styled.button`
 
 const Completed = styled.p`
   margin-right: 25px;
-  color: ${props => props.theme.givelifyTheme.colors.green};
+  color: ${props => props.theme.customTheme.colors.green};
 `;
 
 export default Todo;

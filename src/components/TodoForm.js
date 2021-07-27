@@ -57,9 +57,9 @@ const FormContainer = styled.form`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 100px;
-  background: ${props => props.theme.givelifyTheme.colors.white};
+  background: ${props => props.theme.customTheme.colors.white};
   border-radius: 12px;
-  box-shadow: ${props => props.focused ? `0 4px 32px ${rgba(props.theme.givelifyTheme.colors.categories[props.selectedCategory], .12)}` : `0 4px 8px ${props => props.theme.givelifyTheme.colors.grayShadow}`};
+  box-shadow: ${props => props.focused ? `0 4px 32px ${rgba(props.theme.customTheme.colors.categories[props.selectedCategory], .12)}` : `0 4px 8px ${props => props.theme.customTheme.colors.grayShadow}`};
   transition: all .3s ease;
 
   @media (max-width: 1024px) {
@@ -67,13 +67,13 @@ const FormContainer = styled.form`
   }
 
   > input {
-    caret-color: ${ props => props.selectedCategory !== 'no_date' ? props.theme.givelifyTheme.colors.categories[props.selectedCategory] : props.theme.givelifyTheme.colors.gray900};
+    caret-color: ${ props => props.selectedCategory !== 'no_date' ? props.theme.customTheme.colors.categories[props.selectedCategory] : props.theme.customTheme.colors.gray900};
   }
 `;
 
 const FormInput = styled.input`
   font-size: 24px;
-  color: ${props => props.theme.givelifyTheme.colors.gray500};
+  color: ${props => props.theme.customTheme.colors.gray500};
   line-height: 1.2;
   letter-spacing: -.02em;
   border: none;
@@ -84,7 +84,7 @@ const FormInput = styled.input`
   }
 
   &::placeholder {
-    color: ${props => props.theme.givelifyTheme.colors.gray900}
+    color: ${props => props.theme.customTheme.colors.gray900}
   }
 `;
 
@@ -102,17 +102,17 @@ const FormControls = styled.div`
 const Button = styled.button`
   padding: 12px 16px;
   margin-right: 8px;
-  color: ${props => props.theme.givelifyTheme.colors.gray700};
-  background: ${props => props.theme.givelifyTheme.colors.grayBackground};
-  border: 1px solid ${props => props.theme.givelifyTheme.colors.white};
+  color: ${props => props.theme.customTheme.colors.gray700};
+  background: ${props => props.theme.customTheme.colors.grayBackground};
+  border: 1px solid ${props => props.theme.customTheme.colors.white};
   border-radius: 100px;
   outline: none;
   cursor: pointer;
   transition: all .3s ease;
 
   &.active, &:hover {
-    color: ${props => props.theme.givelifyTheme.colors.categories[props.id]};
-    background: ${props => rgba(props.theme.givelifyTheme.colors.categories[props.id], .1)};
+    color: ${props => props.theme.customTheme.colors.categories[props.id]};
+    background: ${props => rgba(props.theme.customTheme.colors.categories[props.id], .1)};
   }
 
   &::last-of-type {
@@ -124,12 +124,12 @@ const AddButton = styled.button`
   width: 40px;
   height: 40px;
   font-size: 24px;
-  background-color: ${props => props.selectedCategory !== 'no_date' ? props.theme.givelifyTheme.colors.categories[props.selectedCategory] : props.theme.givelifyTheme.colors.grayBackground};
+  background-color: ${props => props.selectedCategory !== 'no_date' ? props.theme.customTheme.colors.categories[props.selectedCategory] : props.theme.customTheme.colors.grayBackground};
   background-image: ${props => props.selectedCategory !== 'no_date' ? `url(${plusWhite})` : `url(${plus})`};
   background-size: 18px 18px;
   background-position: center;
   background-repeat: no-repeat;
-  border: 1px solid ${props => props.theme.givelifyTheme.colors.white};
+  border: 1px solid ${props => props.theme.customTheme.colors.white};
   border-radius: 100px;
   cursor: pointer;
   outline: none;
@@ -138,7 +138,7 @@ const AddButton = styled.button`
 
   &:hover, &:active, &:focus {
     background-image: url(${plusWhite});
-    background-color: ${props => props.theme.givelifyTheme.colors.categories[props.selectedCategory]};
+    background-color: ${props => props.theme.customTheme.colors.categories[props.selectedCategory]};
     transform: rotate(90deg);
   }
 `;

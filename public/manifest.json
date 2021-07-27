@@ -1,6 +1,6 @@
 {
-  "short_name": "Givelify Todo App",
-  "name": "Givelify Todo Application",
+  "short_name": "Todo App",
+  "name": "Todo Application",
   "start_url": ".",
   "display": "standalone",
   "theme_color": "#000000",

@@ -1,19 +1,19 @@
-# Givelify Todo Application
+# Todo Application
 
-[View Demo](https://givelify-todo-application.herokuapp.com/)
+[View Demo](https://demo-todo-application.herokuapp.com/)
 
 This todo application is designed to allow users to create, modify, and delete todo items. Users have the ability to assign and reassign todo items to specific date categories (e.g. Today, Tomorrow, Next Week). Active todo items are shown in association with their respective categories. Completed items can be viewed at the bottom of the application.
 
-This application was built using React with [Create React App](https://create-react-app.dev/) as its starter template and uses React Hooks for state management. Styling was done using [styled-components](https://styled-components.com/) and the application makes use of styled-components' [theme provider](https://styled-components.com/docs/advanced#theming) to give all components access to the [Givelify theme](https://github.com/djsaun/Givelify-Todo-Application/blob/master/src/components/GivelifyThemeProvider.js).
+This application was built using React with [Create React App](https://create-react-app.dev/) as its starter template and uses React Hooks for state management. Styling was done using [styled-components](https://styled-components.com/) and the application makes use of styled-components' [theme provider](https://styled-components.com/docs/advanced#theming) to give all components access to the [theme](https://github.com/djsaun/Todo-Application/blob/master/src/components/CustomThemeProvider.js).
 
 ## Getting Started
 
 Please run the following commands to load the application locally:
 
 ```
-git clone https://github.com/djsaun/Givelify-Todo-Application.git
+git clone https://github.com/djsaun/Todo-Application.git
 
-cd Givelify-Todo-Application
+cd Todo-Application
 
 yarn && yarn start
 ```

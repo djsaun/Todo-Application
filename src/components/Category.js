@@ -23,9 +23,9 @@ const Category = props => {
 const CategoryItem = styled.div`
   margin-bottom: 12px;
   padding: 25px 30px 25px 35px;
-  background: ${props => props.theme.givelifyTheme.colors.white};
+  background: ${props => props.theme.customTheme.colors.white};
   border-radius: 12px;
-  box-shadow: 0 4px 8px ${props => props.theme.givelifyTheme.colors.grayShadow};
+  box-shadow: 0 4px 8px ${props => props.theme.customTheme.colors.grayShadow};
 
   &:last-of-type {
     margin-bottom: 0;
@@ -44,7 +44,7 @@ const CategoryInfo = styled.div`
 `;
 
 const Icon = styled.div`
-  background-image: url(${props => props.theme.givelifyTheme.icons.categories[props.image]});
+  background-image: url(${props => props.theme.customTheme.icons.categories[props.image]});
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -55,13 +55,13 @@ const Icon = styled.div`
 const Title = styled.h3`
   margin: 0 0 0 30px;
   font-size: 24px;
-  color: ${props => props.theme.givelifyTheme.colors.categories[props.color]}
+  color: ${props => props.theme.customTheme.colors.categories[props.color]}
 `;
 
 const Count = styled.p`
   margin: 0;
   font-size: 18px;
-  color: ${props => props.theme.givelifyTheme.colors.gray700};
+  color: ${props => props.theme.customTheme.colors.gray700};
   line-height: 1.22;
 `
 

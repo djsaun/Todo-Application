@@ -7,7 +7,7 @@ import sun from '../icons/sun.svg';
 
 
 // Create a default theme for the application that contains all of our colors, icons, etc.
-const givelifyTheme = {
+const customTheme = {
   colors: {
     gray900: '#0A1323',
     gray800: '#3B424E',
@@ -37,15 +37,15 @@ const givelifyTheme = {
 }
 
 // Create a styled-components ThemeProvider (https://styled-components.com/docs/advanced#theming) that we'll import into our application
-// This will expose our givelifyTheme object to all of our components using React's context API.
-const GivelifyThemeProvider = (props) => {
+// This will expose our customTheme object to all of our components using React's context API.
+const CustomThemeProvider = (props) => {
 
-  // Create a default theme object that includes the givelifyTheme
+  // Create a default theme object that includes the customTheme
   const theme = {
-    givelifyTheme: Object.assign({}, givelifyTheme, props.theme),
+    customTheme: Object.assign({}, customTheme, props.theme),
   };
 
-  // Pass our givelifyTheme to the ThemeProvider
+  // Pass our customTheme to the ThemeProvider
   return <ThemeProvider theme = {
     theme
   } > {
@@ -53,4 +53,4 @@ const GivelifyThemeProvider = (props) => {
   } </ThemeProvider>;
 };
 
-export default GivelifyThemeProvider;
+export default CustomThemeProvider;

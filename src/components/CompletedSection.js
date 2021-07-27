@@ -35,7 +35,7 @@ const Results = styled.div`
 const DisplayText = styled.p`
   margin-bottom: 55px;
   font-size: 18px;
-  color: ${props => props.theme.givelifyTheme.colors.gray800};
+  color: ${props => props.theme.customTheme.colors.gray800};
   line-height: 1.22;
   text-transform: capitalize;
   text-align: center;

@@ -104,7 +104,7 @@ function App() {
   return (
     <Container>
       <Header>
-        <img src={logo} alt="Givelify Todo Application" />
+        <img src={logo} alt="Todo Application" />
       </Header>
 
       <FunctionsContext.Provider value={functions}>
